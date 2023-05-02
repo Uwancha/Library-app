@@ -11,41 +11,46 @@
 <body>
     <nav>
         <h2>Library</h2>
-        <div>
+        <div id="add">
             <h4>Add Book</h4>
             <img src="images/download.png" alt="">
         </div>
     </nav>
 
-    <main>
-        <section id="form">
+    
+    <section id="form">
         
-                <form action="">
-                    <div>
-                        <label for="title">Title</label>
-                        <input type="text" id="title" required>
-                    </div>
-                    <div>
-                        <label for="author">Author</label>
+            <form action="">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div>
+                    <label for="author">Author</label>
                         <input type="text" id="author" required>
-                    </div>
-                    <div>
-                        <label for="pages">Pages</label>
-                        <input type="number" id="pages" min="5" required>
-                    </div>
-                    <div>
-                        <label for="read">Read?</label>
-                        <input type="checkbox" id="read" required>
-                    </div>
-                    <div>
-                        <input type="submit" value="Add Book">
-                    </div>
-        </section>
-        <section id="books">
+                </div>
+                <div>
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" min="5" required>
+                </div>
+                <div>
+                    <label for="read">Read?</label>
+                    <select name="read" id="read">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit" id="submit" value="Add Book">
+                </div>
+            </form>
+    </section>
+    <section id="books">
+        
 
+    </section>
 
-        </section>
-    </main>
+    
 
     <footer>
         <div>
@@ -58,7 +63,7 @@
         </div>
     </footer>
 
-
-    </form>
+<script src="library.js"></script>
+    
 </body>
 </html>

@@ -6,6 +6,9 @@
 body {
     height: 100%;
     color: aliceblue;
+    background-color: rgb(28, 43, 34);
+
+    position: relative;
 }
 
 nav {
@@ -17,25 +20,53 @@ nav {
     background-color: rgba(0, 0, 0);
 }
 
-main {
+#books {
     display: grid;
-    grid-template-columns: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(150px, 200px));
+    gap: 1.5rem 1.5rem;
 
-    grid-template-rows: 1fr 5fr;
-    padding-top: .5rem;
-    margin-right: auto;
-    margin-left: auto;
+    height: 80vh;
+    
+    padding: 1.5rem;
     
   /*  background-color: rgba(74, 82, 75, 0.931); */
-   background-color: rgb(28 43 34);
+   background-color: rgb(28, 43, 34);
+}
+
+#books > * {
+    background-color: rgba(240, 255, 255, 0.734);
+    color: black;
+    box-shadow: 2px 3px 25px azure;
+    font-size: larger;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    /*gap: 1.5rem; */
+    flex-direction: column;
+    margin-right: 2rem;
+}
+
+.button {
+    align-self: flex-end;
+    background-color: aliceblue;
+    border-radius: 50%;
+    padding: .1rem;
+    color: red;
 }
 
 #form {
-    justify-self: center;
+    position: absolute;
+    left: 40rem;
+    right: 5rem;
+    top: 15rem;
+    bottom: 5rem;
+    
 }
 
 form {
     background-color: black;
+    width: max-content;
     padding: .8rem;
     border-radius: 1rem;
 }
@@ -50,9 +81,7 @@ h2 + div {
     gap: .3rem;
 }
 
-input{
-    
-}
+
 
 img {
     border-radius: 50%;
