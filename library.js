@@ -1,101 +1,103 @@
 /* Get HTML elements */
 
-
-let form = document.querySelector("#form");
-let sub = document.querySelector("form")
+let books = document.querySelector("#books");
+let body = document.querySelector("body");
+let formContainer = document.querySelector("#form")
+let removeForm = document.querySelector(".remove")
 let add = document.querySelector("#add")
-let books = document.querySelector("#books")
 
-
-/* Hide form from DOM*/
-window.addEventListener("load", remove);
-
-function remove() {
-    form.removeChild(sub)
-}
-
-
-/* Display form */
-add.addEventListener("click", display)
-
-function display() {
-  form.appendChild(sub)
-}
 
 /* Define a book constructor */
 
 function Books(author, title, pages, read) {
-        this.author = author;
-        this.title = title;
-        this.pages = pages;
-        this.read = read;
-    }
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
+}
 
 /* Define library to store books */ 
 let myLibrary = [];
 
-function addBookToLibrary(author, title, pages, read) {
-    let newBook = new Books(author, title, pages, read)
+/* Define functions to take user inputs and add to library */
+
+function addBookToLibrary() {
+    let bookAuthour = document.querySelector("#author").value;
+    let bookTitle = document.querySelector("#title").value;
+    let bookPages = document.querySelector("#pages").value;
+    let bookRead = document.querySelector("#read").value;
+
+    let newBook = new Books(bookAuthour, bookTitle, bookPages, bookRead)
 
     myLibrary.push(newBook);
+
+    
+    
+    //clear form fields
+    document.querySelector("#author").value = ""
+    document.querySelector("#title").value = ""
+    document.querySelector("#pages").value = ""
+
 }
 
-/* Add books manually */
-
-addBookToLibrary("Mihret Debebe", "Lela Sew", 419, "Yes");
-addBookToLibrary("Bealu Girma", "Oromay", 300, "Yes")
-addBookToLibrary("Bealu Girma", "Kadmas Bashager", 321, "no")
-
-/* define function to display books */
+/* Define function to display books */
 function displayBooks() {
+    
     for (let i = 0; i < myLibrary.length; i++) {
-
+        let books = document.querySelector("#books");
         let container = document.createElement("div");
         let bookTitle = document.createElement("div");
         let bookAuthour = document.createElement("div");
         let bookPages = document.createElement("div");
-        let bookRead = document.createElement("div")
-        let removeButton = document.createElement("div")
+        let bookRead = document.createElement("button")
+        let removeButton = document.createElement("button")
+
+        bookTitle.className = "style";
+        bookAuthour.className = "style";
+        bookPages.className = "style"
+
+
+        if (myLibrary[i].read === "Yes") {
+            bookRead.textContent = "Read Book: Yes";
+            bookRead.className = "readalready";
+        }
+        else{
+            console.log(myLibrary[i].read)
+            bookRead.textContent = "Read Book: Not Yet";
+            bookRead.className = "readalert";
+        }
+
+
         
         bookAuthour.textContent = "Author: " + myLibrary[i].author;
         bookTitle.textContent = "Title: " + myLibrary[i].title;
         bookPages.textContent = "Pages: " + myLibrary[i].pages;
-        removeButton.textContent = "X";
+        removeButton.textContent = "Remove";
         removeButton.className = "button";
         
-        if (myLibrary[i].read == "Yes") {
-            bookRead.textContent = "Read?: Yes"
-        }else {
-            bookRead.textContent = "Read: Not Yet"
-        } 
-
-        container.appendChild(removeButton);
+        
+        
         container.appendChild(bookAuthour);
         container.appendChild(bookTitle);
         container.appendChild(bookPages);
-        container.appendChild(bookRead)
+        container.appendChild(bookRead);
+        container.appendChild(removeButton);
 
-        books.appendChild(container)
+        books.appendChild(container);
     }
-} 
 
-displayBooks();
+}  
 
-/*
 
-// Functions to take user input and add it to the Library 
-
-let takeInput = document.querySelector("#submit");
-let bookAuthour = document.querySelector("#author");
-let bookTitle = document.querySelector("#title");
-let bookPages = document.querySelector("#pages");
-let bookRead = document.querySelector("#read")
-
-takeInput.addEventListener("click", userInput, false);
-
-function userInput(event) {
-    addBookToLibrary(bookTitle, bookAuthour, bookPages, bookRead);
+form.addEventListener("submit", (event) => {
+    books.textContent = "";
     event.preventDefault();
-}
+    addBookToLibrary();
+    displayBooks();
+});  
 
-*/
+removeForm.addEventListener("click", () => body.removeChild(formContainer))
+add.addEventListener("click", () => body.appendChild(formContainer))
+window.addEventListener("DOMContentLoaded", () => body.removeChild(formContainer))
+
+

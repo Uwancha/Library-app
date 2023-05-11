@@ -6,7 +6,6 @@
 body {
     height: 100%;
     color: aliceblue;
-    background-color: rgb(28, 43, 34);
 
     position: relative;
 }
@@ -22,53 +21,111 @@ nav {
 
 #books {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(150px, 200px));
     gap: 1.5rem 1.5rem;
 
     height: 80vh;
+    overflow-y: scroll;
     
     padding: 1.5rem;
     
   /*  background-color: rgba(74, 82, 75, 0.931); */
-   background-color: rgb(28, 43, 34);
+   background-color: azure;
 }
 
 #books > * {
-    background-color: rgba(240, 255, 255, 0.734);
     color: black;
-    box-shadow: 2px 3px 25px azure;
-    font-size: larger;
+    border-radius: .5rem;
+    box-shadow: 12px 15px 115px rgba(138, 175, 175, 0.821);
+    font-size: 1.2rem;
+    font-weight: 500;
     display: flex;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    /*gap: 1.5rem; */
     flex-direction: column;
     margin-right: 2rem;
 }
 
+.style {
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
+    border: none;
+    border-radius: 3rem;
+    padding: .21rem 0rem .1rem 1.2rem;
+}
+
+.style:hover {
+background-color: rgb(0, 0, 0, .7);
+}
+
+.readalready {
+   background-color: rgb(0, 128, 0);
+   color: aliceblue;
+   border: none;
+   border-radius: 3rem;
+}
+
+.readalready:hover {
+    background-color: rgb(0, 128, 0, .7);
+}
+
+.readalert {
+    background-color: rgb(255, 0, 0);
+    color: aliceblue;
+    border: none;
+    border-radius: 3rem;
+}
+
+.readalert:hover {
+background-color: rgb(255, 0, 0, .7);
+}
+
 .button {
-    align-self: flex-end;
-    background-color: aliceblue;
-    border-radius: 50%;
+    align-self: center;
     padding: .1rem;
-    color: red;
+    border: none;
+    border-radius: .4rem;
+    background-color: red;
+    color: aliceblue;
+}
+
+.button:hover {
+    color: rgb(240, 248, 255, .5);
 }
 
 #form {
     position: absolute;
-    left: 40rem;
-    right: 5rem;
-    top: 15rem;
-    bottom: 5rem;
-    
+    left: 30vw;
+    top: 15vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    width: 500px;
 }
 
 form {
-    background-color: black;
-    width: max-content;
+    display: flex;
+    flex-direction: column;
+    
+    
     padding: .8rem;
-    border-radius: 1rem;
+    gap: 1rem;
+    margin-top: 5rem;
+}
+
+form > * {
+    flex: 1;
+}
+
+.remove {
+    border-radius: 50%;
+    background-color: crimson;
+    color: azure;
+    align-self: flex-end;
+    padding: 1rem;
 }
 
 label {
@@ -81,7 +138,9 @@ h2 + div {
     gap: .3rem;
 }
 
-
+#option {
+    display: flex;
+}
 
 img {
     border-radius: 50%;
@@ -93,14 +152,13 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.6rem;
-
+    padding: 1rem;
     background-color: rgb(0, 0, 0);
 }
 
 footer div {
     display: flex;
-    gap: 1rem;
+    gap: .1rem;
 }
 
 footer img {
