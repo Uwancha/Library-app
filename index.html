@@ -9,36 +9,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <h2>Library</h2>
-        <div id="add">
-            <h4>Add Book</h4>
-            <img src="images/download.png" alt="">
-        </div>
-    </nav>
+    <header>
+        <nav>
+            <h3>Library</h3>
+            <div id="add">
+                <h4>Add Book</h4>
+                <img src="images/download.png" alt="">
+            </div>
+        </nav>
+    </header>
 
     
-    <section id="form">
-        <div class="remove">X</div>
+    <section class="formContainer">
+        <button class="remove">X</button>
         
             <form action="">
                 <div>
                     <label for="title">Title</label>
-                    <input type="text" id="title" placeholder="Title" required>
+                    <input type="text" id="title" required>
                 </div>
                 <div>
                     <label for="author">Author</label>
-                        <input type="text" id="author" placeholder="Author" required>
+                        <input type="text" id="author" required>
                 </div>
                 <div>
                     <label for="pages">Pages</label>
-                    <input type="number" id="pages" min="5" placeholder="Pages" required>
+                    <input type="number" id="pages" min="5" required>
                 </div>
                 <div id="option">
                     <label for="read">Read?</label>
                     <select name="read" id="read">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <option >Yes</option>
+                        <option >No</option>
                     </select>
                 </div>
                 <div>
@@ -55,7 +57,7 @@
 
     <footer>
         <div>
-            <a href="https://uwancha.github.io/Library-app/">
+            <a href="https://github.com/Uwancha/Library-app">
                 <h2>Source code</h2>
                 <img src="images/eye.png" alt="">
             </a>

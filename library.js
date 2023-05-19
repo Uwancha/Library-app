@@ -1,103 +1,113 @@
 /* Get HTML elements */
 
-let books = document.querySelector("#books");
-let body = document.querySelector("body");
-let formContainer = document.querySelector("#form")
-let removeForm = document.querySelector(".remove")
-let add = document.querySelector("#add")
+const books = document.querySelector("#books");
+const formContainer = document.querySelector(".formContainer")
+const addBookBtn = document.querySelector("#add")
+const removeFormBtn = document.querySelector(".remove")
 
 
 /* Define a book constructor */
 
-function Books(author, title, pages, read) {
+function Book(author, title, pages, read) {
     this.author = author;
     this.title = title;
     this.pages = pages;
     this.read = read;
 }
 
-/* Define library to store books */ 
-let myLibrary = [];
+/* Define library to store books */
+let library = [];
 
 /* Define functions to take user inputs and add to library */
 
-function addBookToLibrary() {
-    let bookAuthour = document.querySelector("#author").value;
-    let bookTitle = document.querySelector("#title").value;
-    let bookPages = document.querySelector("#pages").value;
-    let bookRead = document.querySelector("#read").value;
+function addBookToLibrary(book) {
 
-    let newBook = new Books(bookAuthour, bookTitle, bookPages, bookRead)
+    library.push(book);
 
-    myLibrary.push(newBook);
-
-    
-    
-    //clear form fields
-    document.querySelector("#author").value = ""
-    document.querySelector("#title").value = ""
-    document.querySelector("#pages").value = ""
 
 }
 
 /* Define function to display books */
-function displayBooks() {
+function displayBook(book) {
     
-    for (let i = 0; i < myLibrary.length; i++) {
-        let books = document.querySelector("#books");
-        let container = document.createElement("div");
-        let bookTitle = document.createElement("div");
-        let bookAuthour = document.createElement("div");
-        let bookPages = document.createElement("div");
-        let bookRead = document.createElement("button")
-        let removeButton = document.createElement("button")
+    const container = document.createElement("div");
 
-        bookTitle.className = "style";
-        bookAuthour.className = "style";
-        bookPages.className = "style"
+    const bookTitle = document.createElement("div");
+    bookTitle.textContent = `Title: ${book.title}`;
 
-
-        if (myLibrary[i].read === "Yes") {
-            bookRead.textContent = "Read Book: Yes";
-            bookRead.className = "readalready";
-        }
-        else{
-            console.log(myLibrary[i].read)
-            bookRead.textContent = "Read Book: Not Yet";
-            bookRead.className = "readalert";
-        }
-
-
+    const bookAuthour = document.createElement("div");
+    bookAuthour.textContent = `Author: ${book.author}`;
         
-        bookAuthour.textContent = "Author: " + myLibrary[i].author;
-        bookTitle.textContent = "Title: " + myLibrary[i].title;
-        bookPages.textContent = "Pages: " + myLibrary[i].pages;
+    const bookPages = document.createElement("div");
+    bookPages.textContent = `Pages: ${book.pages}`;
+
+    const bookRead = document.createElement("button");
+    bookRead.textContent = book.read ? "Read Book: Yes" : "Read Book: Not Yet";
+    bookRead.classList.add('book-read');
+
+    const removeButton = document.createElement("button");
+        removeButton.classList.add("book-remove");
         removeButton.textContent = "Remove";
-        removeButton.className = "button";
-        
-        
-        
-        container.appendChild(bookAuthour);
-        container.appendChild(bookTitle);
-        container.appendChild(bookPages);
-        container.appendChild(bookRead);
-        container.appendChild(removeButton);
+        removeButton.addEventListener("click", () => {
+        removeBookFromLibrary(book);
+        container.remove();
+    });
 
-        books.appendChild(container);
-    }
 
+    container.appendChild(bookAuthour);
+    container.appendChild(bookTitle);
+    container.appendChild(bookPages);
+    container.appendChild(bookRead);
+    container.appendChild(removeButton);
+
+    books.appendChild(container);
 }  
 
+/* Define function to display all books */
+function displayBooks() {
+    books.innerHTML = "";
+    library.forEach(book => displayBook(book));
+}
 
-form.addEventListener("submit", (event) => {
-    books.textContent = "";
+/* Define function to take user inputs and add to library */
+function addBookToLibraryForm() {
+    const bookAuthor = document.querySelector("#author").value;
+    const bookTitle = document.querySelector("#title").value;
+    const bookPages = document.querySelector("#pages").value;
+    const bookRead = document.querySelector("#read").value === "Yes";
+
+    const newBook = new Book(bookAuthor, bookTitle, bookPages, bookRead);
+    addBookToLibrary(newBook);
+
+    // Clear form fields
+    document.querySelector("#author").value = "";
+    document.querySelector("#title").value = "";
+    document.querySelector("#pages").value = "";
+ 
+    displayBook(newBook);
+}
+
+/* Define function to remove book from library */
+function removeBookFromLibrary(book) {
+    const index = library.indexOf(book);
+    if (index !== -1) {
+        library.splice(index, 1);
+    }
+}
+
+/* Add event listener to add and display book */
+formContainer.addEventListener("submit", (event) => {
     event.preventDefault();
-    addBookToLibrary();
-    displayBooks();
-});  
-
-removeForm.addEventListener("click", () => body.removeChild(formContainer))
-add.addEventListener("click", () => body.appendChild(formContainer))
-window.addEventListener("DOMContentLoaded", () => body.removeChild(formContainer))
+    addBookToLibraryForm();
+});
 
 
+/* Event listners to show and hide form */
+
+addBookBtn.addEventListener('click', () => {
+   formContainer.classList.add('show');
+});
+
+removeFormBtn.addEventListener("click", () => {
+    formContainer.classList.remove('show');
+})

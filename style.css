@@ -20,6 +20,12 @@ nav {
     background-color: rgba(0, 0, 0);
 }
 
+h3 {
+    border-right: solid 3px goldenrod;
+    border-bottom: solid 3px goldenrod;
+    padding: 5px;
+}
+
 #books {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -30,17 +36,16 @@ nav {
     overflow-y: scroll;
     
     padding: 1.5rem;
-    
-  /*  background-color: rgba(74, 82, 75, 0.931); */
    background-color: azure;
 }
 
 #books > * {
-    color: black;
+    color: goldenrod;
+    text-shadow: #ffc10759 2px 1px;
     border-radius: .5rem;
     box-shadow: 12px 15px 115px rgba(138, 175, 175, 0.821);
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1.7rem;
+    font-weight: 700;
     display: flex;
     justify-content: space-between;
     padding: 1rem 1.5rem;
@@ -48,92 +53,78 @@ nav {
     margin-right: 2rem;
 }
 
-.style {
-    background-color: rgb(0, 0, 0);
-    color: aliceblue;
+.book-read {
+    background-color: goldenrod;
     border: none;
-    border-radius: 3rem;
-    padding: .21rem 0rem .1rem 1.2rem;
+    border-radius: 10px;
 }
 
-.style:hover {
-background-color: rgb(0, 0, 0, .7);
-}
 
-.readalready {
-   background-color: rgb(0, 128, 0);
-   color: aliceblue;
-   border: none;
-   border-radius: 3rem;
-}
 
-.readalready:hover {
-    background-color: rgb(0, 128, 0, .7);
-}
-
-.readalert {
-    background-color: rgb(255, 0, 0);
-    color: aliceblue;
-    border: none;
-    border-radius: 3rem;
-}
-
-.readalert:hover {
-background-color: rgb(255, 0, 0, .7);
-}
-
-.button {
-    align-self: center;
-    padding: .1rem;
-    border: none;
-    border-radius: .4rem;
+.book-remove {
     background-color: red;
-    color: aliceblue;
+    border: none;
+    border-radius: 10px;
 }
 
-.button:hover {
-    color: rgb(240, 248, 255, .5);
-}
-
-#form {
-    position: absolute;
-    left: 30vw;
-    top: 15vh;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 500px;
-    width: 500px;
-}
 
 form {
     display: flex;
     flex-direction: column;
-    
-    
     padding: .8rem;
     gap: 1rem;
-    margin-top: 5rem;
 }
 
 form > * {
     flex: 1;
 }
 
+
+.formContainer {
+    display: none;
+    position: absolute;
+    
+    width: 300px;
+    padding: 10px 20px;
+    background-color: rgb(218, 165, 32);
+    border-radius: 5px;
+}
+  
+.formContainer.show {
+    display: block;
+    margin-left: 40%;
+}
+  
+
 .remove {
+    border: none;
     border-radius: 50%;
-    background-color: crimson;
-    color: azure;
-    align-self: flex-end;
-    padding: 1rem;
+    background-color:rgb(38, 36, 36, .8);
+    width: 25px;
+    height:25px;
+    text-align:center;
+    padding:.2rem;
+    color: #e7efef;
+    margin-left: 95%;
+    margin-top: -20px;
 }
 
 label {
     display: block;
 }
 
-h2 + div {
+input{
+    border: solid 2px rgb(243, 241, 235);
+    border-radius: 10px;
+    color: rgb(20, 135, 235);
+}
+
+input:focus{
+    outline: none;
+    border: solid 3px rgb(0, 128, 0, .7);
+}
+
+h3 + div {
     display: flex;
     align-items: center;
     gap: .3rem;
@@ -168,15 +159,10 @@ footer img {
     background-color: white;
 }
 
-a:link {
+a {
    text-decoration: none;
    color: rgb(218, 165, 32, .6);
 }
-
-a:visited {
-    color: red;
-}
-
 
 a:hover {
     color: rgb(218, 165, 32);
@@ -184,16 +170,22 @@ a:hover {
 
 
 @media (max-width: 730px) {
-    #form {
-        position: absolute;
-        margin-left:auto;
-        margin-right:auto;
-        background-color: black;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 400px;
-        width: 200px;}
+
+    .formContainer{
+        width: 210px;
+    }
+
+    .formContainer.show {
+        display: block;
+        margin-left: 30%;
+    }
+      
+    
+
+    form{
+        width: 100%;
+        padding: 0;
+    }
  
     footer {
         font-size: .8rem;
