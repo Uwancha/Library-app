@@ -28,8 +28,8 @@ h3 {
 
 #books {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(150px, 200px));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 200px));
     gap: 1.5rem 1.5rem;
 
     height: 85vh;
@@ -40,8 +40,8 @@ h3 {
 }
 
 #books > * {
-    color: goldenrod;
-    text-shadow: #ffc10759 2px 1px;
+    color: black;
+    text-shadow: #0b0b0a59 2px 1px;
     border-radius: .5rem;
     box-shadow: 12px 15px 115px rgba(138, 175, 175, 0.821);
     font-size: 1.7rem;
@@ -50,21 +50,43 @@ h3 {
     justify-content: space-between;
     padding: 1rem 1.5rem;
     flex-direction: column;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    border-left:#FFC107 solid 5px;
+    border-right:#FFC107 solid 5px;
+}
+
+#books > * > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book-author {
+    border-bottom: solid rgb(14, 239, 14) 3px;
 }
 
 .book-read {
-    background-color: goldenrod;
+    background-color: black;
+    padding: .32rem;
     border: none;
     border-radius: 10px;
+    color: azure;
 }
 
+.book-read:hover {
+    color: rgb(240, 255, 255, .6);
+}
 
 
 .book-remove {
     background-color: red;
+    padding: .32rem;
     border: none;
     border-radius: 10px;
+    color: azure;
+}
+
+.book-remove:hover {
+    color: rgb(240, 255, 255, .6);
 }
 
 
@@ -86,13 +108,14 @@ form > * {
     
     width: 300px;
     padding: 10px 20px;
-    background-color: rgb(218, 165, 32);
+    background-color: black;
     border-radius: 5px;
 }
   
 .formContainer.show {
     display: block;
     margin-left: 40%;
+    margin-top: 10%;
 }
   
 
