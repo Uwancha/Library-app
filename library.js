@@ -15,6 +15,10 @@ function Book(author, title, pages, read) {
     this.read = read;
 }
 
+Book.prototype.readStatus = function (status) {
+    this.read = status;
+}
+
 /* Define library to store books */
 let library = [];
 
@@ -33,17 +37,26 @@ function displayBook(book) {
     const container = document.createElement("div");
 
     const bookTitle = document.createElement("div");
-    bookTitle.textContent = `Title: ${book.title}`;
+    bookTitle.textContent = `${book.title}`;
+    
 
     const bookAuthour = document.createElement("div");
-    bookAuthour.textContent = `Author: ${book.author}`;
+    bookAuthour.textContent = `By: ${book.author}`;
+    bookAuthour.classList.add('book-author')
+    
         
     const bookPages = document.createElement("div");
-    bookPages.textContent = `Pages: ${book.pages}`;
+    bookPages.textContent = `${book.pages} Pages`;
 
     const bookRead = document.createElement("button");
-    bookRead.textContent = book.read ? "Read Book: Yes" : "Read Book: Not Yet";
+    bookRead.textContent = book.read ? `Already Read!` : `Not Read Yet!`;
     bookRead.classList.add('book-read');
+
+    bookRead.addEventListener("click", () => {
+        book.readStatus(!book.read)
+
+        bookRead.textContent = !book.read ? `Already Read!` : `Not Read Yet!`;
+    })
 
     const removeButton = document.createElement("button");
         removeButton.classList.add("book-remove");
@@ -53,7 +66,7 @@ function displayBook(book) {
         container.remove();
     });
 
-
+    
     container.appendChild(bookAuthour);
     container.appendChild(bookTitle);
     container.appendChild(bookPages);
